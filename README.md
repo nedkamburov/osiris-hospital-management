@@ -1,2 +1,2 @@
-# osiris-hospital-management
-Simple Hospital Management System
+# Osiris Hospital Management System
+Simple Hospital Management System built with Springboot and React
