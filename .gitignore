@@ -79,6 +79,16 @@ nb-configuration.xml
 .code-workspace
 
 ##############################
+## React
+##############################
+node_modules/
+.cache/
+dist/
+node/
+.env
+coverage/
+
+##############################
 ## OS X
 ##############################
 .DS_Store
