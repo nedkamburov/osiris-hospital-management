@@ -27,6 +27,10 @@
             <artifactId>mvc-module</artifactId>
         </dependency>
         <dependency>
+            <groupId>com</groupId>
+            <artifactId>frontend</artifactId>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
@@ -46,6 +50,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -70,7 +75,7 @@
                     <configuration>
                         <target>
                             <copy todir="${project.build.directory}/classes/public">
-                                <fileset dir="../frontend-module/src/main/react-home/build"/>
+                                <fileset dir="../frontend/src/main/react-home/build"/>
                             </copy>
                         </target>
                     </configuration>
