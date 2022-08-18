@@ -1,11 +1,9 @@
 package com.healthcare.management.system.rest.controller;
 
-import com.healthcare.management.system.rest.dao.UserDAO;
 import com.healthcare.management.system.rest.entity.User;
+import com.healthcare.management.system.rest.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,15 +12,53 @@ import java.util.List;
 // TODO: 18.08.22 add version in the api endpoint path
 
 public class UserController {
-    private UserDAO userDAO;
+    private UserService userService;
 
     @Autowired
-    public  UserController(UserDAO theUserDAO) {
-        userDAO = theUserDAO;
+    public  UserController(UserService theUserService) {
+        userService = theUserService;
     }
 
     @GetMapping("/users")
-    public List<User> findAll(){
-        return userDAO.findAll();
+    public List<User> findAllUsers(){
+        return userService.findAll();
+    }
+
+    @GetMapping("/users/{userId}")
+    public User getUser(@PathVariable int userId){
+        User theUser = userService.findById(userId);
+
+        if (theUser == null) {
+            throw new RuntimeException("There is no user with id: " + userId);
+        }
+        return theUser;
+    }
+
+    @PostMapping("/users")
+    public User createUser(@RequestBody User theUser){
+        // just in case they pass an id in JSON ... set id to 0
+        // this is to force a save of new item ... instead of update
+        theUser.setId(0);
+
+        userService.createOrUpdate(theUser);
+        return theUser;
+    }
+
+    @PutMapping("/users")
+    public User updateUser(@RequestBody User theUser){
+        userService.createOrUpdate(theUser);
+        return theUser;
+    }
+
+    @DeleteMapping("/users/{userId}")
+    public String deleteUser(@PathVariable int userId){
+        User theUser = userService.findById(userId);
+
+        if (theUser == null) {
+            throw new RuntimeException("There is no user with id: " + userId);
+        }
+
+        userService.deleteById(userId);
+        return "Delete user with id: " + userId;
     }
 }
