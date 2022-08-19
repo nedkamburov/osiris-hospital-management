@@ -12,7 +12,7 @@
     <artifactId>web-app-module</artifactId>
     <packaging>jar</packaging>
 
-    <name>WebAppModule Maven Webapp</name>
+    <name>web-app-module</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
@@ -25,6 +25,10 @@
         <dependency>
             <groupId>com</groupId>
             <artifactId>mvc-module</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com</groupId>
+            <artifactId>frontend</artifactId>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -46,6 +50,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -62,6 +67,23 @@
                         </exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions><execution>
+                    <phase>generate-resources</phase>
+                    <configuration>
+                        <target>
+                            <copy todir="${project.build.directory}/classes/public">
+                                <fileset dir="../frontend/src/main/react-home/build"/>
+                            </copy>
+                        </target>
+                    </configuration>
+                    <goals>
+                        <goal>run</goal>
+                    </goals>
+                </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

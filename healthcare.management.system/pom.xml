@@ -7,6 +7,7 @@
         <module>rest-module</module>
 		<module>web-app-module</module>
 		<module>mvc-module</module>
+		<module>frontend</module>
 	</modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
@@ -28,6 +29,7 @@
 		<junit.version>4.11</junit.version>
 		<springboot.version>2.7.1</springboot.version>
 		<springboot.starter.thymeleaf.version>2.7.1</springboot.starter.thymeleaf.version>
+		<frontend.plugin.maven.version>1.9.1</frontend.plugin.maven.version>
 	</properties>
 
 	<dependencyManagement>
@@ -46,6 +48,11 @@
 				<groupId>com</groupId>
 				<version>${project.version}</version>
 				<artifactId>web-app-module</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>com</groupId>
+				<version>${project.version}</version>
+				<artifactId>frontend</artifactId>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
@@ -118,6 +125,10 @@
 				<plugin>
 					<artifactId>maven-deploy-plugin</artifactId>
 					<version>2.8.2</version>
+				</plugin>
+				<plugin>
+					<artifactId>frontend-maven-plugin</artifactId>
+					<version>${frontend.plugin.maven.version}</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
