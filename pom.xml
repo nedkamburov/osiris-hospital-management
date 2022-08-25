@@ -8,6 +8,8 @@
 		<module>web-app-module</module>
 		<module>mvc-module</module>
 		<module>frontend</module>
+        <module>db-infrastructure</module>
+		<module>domain</module>
 	</modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
@@ -53,6 +55,16 @@
 			<dependency>
 				<groupId>com</groupId>
 				<artifactId>frontend</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com</groupId>
+				<artifactId>db-infrastructure</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com</groupId>
+				<artifactId>domain</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>

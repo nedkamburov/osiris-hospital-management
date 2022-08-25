@@ -1,64 +1,66 @@
 package com.healthcare.management.system.rest.controller;
 
-import com.healthcare.management.system.rest.entity.User;
-import com.healthcare.management.system.rest.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.healthcare.management.system.domain.DomainUser;
+import com.healthcare.management.system.domain.UserService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
-// TODO: 18.08.22 add version in the api endpoint path
-
+@RequestMapping("/api/v1")
+@RequiredArgsConstructor
 public class UserController {
-    private UserService userService;
-
-    @Autowired
-    public  UserController(UserService theUserService) {
-        userService = theUserService;
-    }
+    private final UserService userService;
 
     @GetMapping("/users")
-    public List<User> findAllUsers(){
+    public List<DomainUser> findAllUsers() {
         return userService.findAll();
     }
 
     @GetMapping("/users/{userId}")
-    public User getUser(@PathVariable int userId){
-        User theUser = userService.findById(userId);
+    public DomainUser getUser(@PathVariable int userId) {
+        DomainUser domainUser = userService.findById(userId);
 
-        if (theUser == null) {
-            throw new RuntimeException("There is no user with id: " + userId);
+        if (domainUser == null) {
+            throw new UserNotFoundException(userId);
         }
-        return theUser;
+        return domainUser;
     }
 
     @PostMapping("/users")
-    public User createUser(@RequestBody User theUser){
+    public DomainUser createUser(@RequestBody DomainUser domainUser) {
         // just in case they pass an id in JSON ... set id to 0
         // this is to force a save of new item ... instead of update
-        theUser.setId(0);
+        domainUser.setId(0);
 
-        userService.createOrUpdate(theUser);
-        return theUser;
+        userService.createOrUpdate(domainUser);
+        return domainUser;
     }
 
-    @PutMapping("/users")
-    public User updateUser(@RequestBody User theUser){
-        userService.createOrUpdate(theUser);
-        return theUser;
+    @PutMapping("/users/{userId}")
+    public DomainUser updateUser(@RequestBody DomainUser domainUser, @PathVariable int userId) {
+        domainUser.setId(userId);
+        try {
+            userService.createOrUpdate(domainUser);
+        } catch (Exception e) {
+            throw new UserNotFoundException(userId);
+        }
+
+        return domainUser;
     }
 
     @DeleteMapping("/users/{userId}")
-    public String deleteUser(@PathVariable int userId){
-        User theUser = userService.findById(userId);
+    public ResponseEntity deleteUser(@PathVariable int userId) {
+        DomainUser domainUser = userService.findById(userId);
 
-        if (theUser == null) {
-            throw new RuntimeException("There is no user with id: " + userId);
+        if (domainUser == null) {
+            throw new UserNotFoundException(userId);
         }
 
         userService.deleteById(userId);
-        return "Delete user with id: " + userId;
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
