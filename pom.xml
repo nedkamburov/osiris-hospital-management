@@ -33,6 +33,7 @@
 		<springboot.starter.thymeleaf.version>2.7.1</springboot.starter.thymeleaf.version>
 		<frontend.plugin.maven.version>1.9.1</frontend.plugin.maven.version>
 		<postgresql.driver.version>42.4.0</postgresql.driver.version>
+		<flyway.version>7.15.0</flyway.version>
 	</properties>
 
 	<dependencyManagement>
@@ -95,12 +96,15 @@
 				<artifactId>spring-boot-starter-data-jpa</artifactId>
 				<version>${springboot.version}</version>
 			</dependency>
-
-			<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 			<dependency>
 				<groupId>org.postgresql</groupId>
 				<artifactId>postgresql</artifactId>
 				<version>${postgresql.driver.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-core</artifactId>
+				<version>${flyway.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>junit</groupId>
