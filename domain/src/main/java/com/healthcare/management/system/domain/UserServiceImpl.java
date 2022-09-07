@@ -1,5 +1,6 @@
 package com.healthcare.management.system.domain;
 
+import com.healthcare.management.system.domain.model.DomainUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

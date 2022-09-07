@@ -1,6 +1,6 @@
 package com.healthcare.management.system.rest.controller;
 
-import com.healthcare.management.system.domain.DomainUser;
+import com.healthcare.management.system.domain.model.DomainUser;
 import com.healthcare.management.system.domain.UserService;
 import com.healthcare.management.system.rest.dto.AddUserDTO;
 import com.healthcare.management.system.rest.dto.UpdateUserDTO;

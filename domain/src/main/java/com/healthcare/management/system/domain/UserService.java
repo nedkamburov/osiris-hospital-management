@@ -1,6 +1,8 @@
 package com.healthcare.management.system.domain;
 
 
+import com.healthcare.management.system.domain.model.DomainUser;
+
 import java.util.List;
 
 public interface UserService {
