@@ -19,8 +19,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void createOrUpdate(DomainUser domainUser) {
+    public DomainUser createOrUpdate(DomainUser domainUser) {
         userDAO.createOrUpdate(domainUser);
+        return domainUser;
     }
 
     @Override
