@@ -1,6 +1,6 @@
 package com.healthcare.management.system.rest.mapper;
 
-import com.healthcare.management.system.domain.DomainUser;
+import com.healthcare.management.system.domain.model.DomainUser;
 import com.healthcare.management.system.rest.dto.AddUserDTO;
 import com.healthcare.management.system.rest.dto.UpdateUserDTO;
 import org.springframework.stereotype.Component;
@@ -34,6 +34,7 @@ public class UserRestMapper {
 
     public UpdateUserDTO toUpdateUserDTO(DomainUser domainUser) {
         UpdateUserDTO userDTO = new UpdateUserDTO();
+        userDTO.setId(domainUser.getId());
         userDTO.setUsername(domainUser.getUsername());
         userDTO.setPassword(domainUser.getPassword());
         userDTO.setEmail(domainUser.getEmail());
@@ -46,6 +47,7 @@ public class UserRestMapper {
 
     public DomainUser fromUpdateUserDTO(UpdateUserDTO userDTO) {
         DomainUser domainUser = new DomainUser();
+        domainUser.setId(userDTO.getId());
         domainUser.setUsername(userDTO.getUsername());
         domainUser.setPassword(userDTO.getPassword());
         domainUser.setEmail(userDTO.getEmail());
