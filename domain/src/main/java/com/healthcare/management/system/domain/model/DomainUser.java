@@ -1,4 +1,4 @@
-package com.healthcare.management.system.domain;
+package com.healthcare.management.system.domain.model;
 
 import lombok.Data;
 

@@ -1,7 +1,7 @@
 package com.healthcare.management.system.db.infrastructure;
 
 import com.healthcare.management.system.db.infrastructure.model.UserEntity;
-import com.healthcare.management.system.domain.DomainUser;
+import com.healthcare.management.system.domain.model.DomainUser;
 import com.healthcare.management.system.domain.DomainUserDAO;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.Session;

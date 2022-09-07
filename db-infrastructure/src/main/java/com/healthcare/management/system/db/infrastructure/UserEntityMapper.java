@@ -1,7 +1,7 @@
 package com.healthcare.management.system.db.infrastructure;
 
 import com.healthcare.management.system.db.infrastructure.model.UserEntity;
-import com.healthcare.management.system.domain.DomainUser;
+import com.healthcare.management.system.domain.model.DomainUser;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -25,7 +25,7 @@ public class UserEntityMapper {
         if (domainUser == null) {
             return null;
         }
-        
+
         UserEntity userEntity = new UserEntity();
         userEntity.setId(domainUser.getId());
         userEntity.setUsername(domainUser.getUsername());
