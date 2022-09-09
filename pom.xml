@@ -8,6 +8,8 @@
 		<module>web-app-module</module>
 		<module>mvc-module</module>
 		<module>frontend</module>
+        <module>db-infrastructure</module>
+		<module>domain</module>
 	</modules>
     <parent>
 		<groupId>org.springframework.boot</groupId>
@@ -30,58 +32,87 @@
 		<springboot.version>2.7.1</springboot.version>
 		<springboot.starter.thymeleaf.version>2.7.1</springboot.starter.thymeleaf.version>
 		<frontend.plugin.maven.version>1.9.1</frontend.plugin.maven.version>
+		<postgresql.driver.version>42.4.0</postgresql.driver.version>
+		<modelMapper.version>3.0.0</modelMapper.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>com</groupId>
-				<version>${project.version}</version>
 				<artifactId>rest-module</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com</groupId>
-				<version>${project.version}</version>
 				<artifactId>mvc-module</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com</groupId>
-				<version>${project.version}</version>
 				<artifactId>web-app-module</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com</groupId>
-				<version>${project.version}</version>
 				<artifactId>frontend</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com</groupId>
+				<artifactId>db-infrastructure</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com</groupId>
+				<artifactId>domain</artifactId>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
-				<version>${springboot.version}</version>
 				<artifactId>spring-boot-starter</artifactId>
+				<version>${springboot.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
-				<version>${springboot.version}</version>
 				<artifactId>spring-boot-devtools</artifactId>
+				<version>${springboot.version}</version>
 				<scope>runtime</scope>
 				<optional>true</optional>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
-				<version>${springboot.version}</version>
 				<artifactId>spring-boot-starter-test</artifactId>
+				<version>${springboot.version}</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
-				<version>${springboot.version}</version>
 				<artifactId>spring-boot-starter-web</artifactId>
+				<version>${springboot.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-jpa</artifactId>
+				<version>${springboot.version}</version>
+			</dependency>
+
+			<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+			<dependency>
+				<groupId>org.postgresql</groupId>
+				<artifactId>postgresql</artifactId>
+				<version>${postgresql.driver.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>${junit.version}</version>
 				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.modelmapper</groupId>
+				<artifactId>modelmapper</artifactId>
+				<version>${modelMapper.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
