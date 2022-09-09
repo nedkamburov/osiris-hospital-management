@@ -13,8 +13,6 @@
     <packaging>jar</packaging>
 
     <name>rest-module</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
 
     <dependencies>
         <dependency>
@@ -32,6 +30,10 @@
         <dependency>
             <groupId>com</groupId>
             <artifactId>db-infrastructure</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
         </dependency>
     </dependencies>
 
