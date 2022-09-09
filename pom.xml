@@ -34,6 +34,7 @@
 		<frontend.plugin.maven.version>1.9.1</frontend.plugin.maven.version>
 		<postgresql.driver.version>42.4.0</postgresql.driver.version>
 		<flyway.version>7.15.0</flyway.version>
+		<modelMapper.version>3.0.0</modelMapper.version>
 	</properties>
 
 	<dependencyManagement>
@@ -111,6 +112,11 @@
 				<artifactId>junit</artifactId>
 				<version>${junit.version}</version>
 				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.modelmapper</groupId>
+				<artifactId>modelmapper</artifactId>
+				<version>${modelMapper.version}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
