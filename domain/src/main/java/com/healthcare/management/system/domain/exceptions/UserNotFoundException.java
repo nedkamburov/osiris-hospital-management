@@ -1,4 +1,4 @@
-package com.healthcare.management.system.rest.controller;
+package com.healthcare.management.system.domain.exceptions;
 
 public class UserNotFoundException extends RuntimeException {
 
